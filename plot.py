@@ -29,34 +29,41 @@ def AverageStd():
 	time_std.append(np.std(X[0,:]))
 	accuracy_ave.append(np.mean(X[1,:]))
 	accuracy_std.append(np.std(X[1,:]))
-
-	filename = "RandomForest.p"
+	
+	filename = "SVM_rbf.p"
 	X = pickle.load(open(filename))
 	time_ave.append(np.mean(X[0,:]))
 	time_std.append(np.std(X[0,:]))
 	accuracy_ave.append(np.mean(X[1,:]))
 	accuracy_std.append(np.std(X[1,:]))
 
-	filename = "KNeighborsClassifier.p"
-	X = pickle.load(open(filename))
-	time_ave.append(np.mean(X[0,:]))
-	time_std.append(np.std(X[0,:]))
-	accuracy_ave.append(np.mean(X[1,:]))
-	accuracy_std.append(np.std(X[1,:]))	
+	# filename = "RandomForest.p"
+	# X = pickle.load(open(filename))
+	# time_ave.append(np.mean(X[0,:]))
+	# time_std.append(np.std(X[0,:]))
+	# accuracy_ave.append(np.mean(X[1,:]))
+	# accuracy_std.append(np.std(X[1,:]))
 
-	filename = "GaussianNB.p"
-	X = pickle.load(open(filename))
-	time_ave.append(np.mean(X[0,:]))
-	time_std.append(np.std(X[0,:]))
-	accuracy_ave.append(np.mean(X[1,:]))
-	accuracy_std.append(np.std(X[1,:]))
+	# filename = "KNeighborsClassifier.p"
+	# X = pickle.load(open(filename))
+	# time_ave.append(np.mean(X[0,:]))
+	# time_std.append(np.std(X[0,:]))
+	# accuracy_ave.append(np.mean(X[1,:]))
+	# accuracy_std.append(np.std(X[1,:]))	
 
-	filename = "NeutralNetwork.p"
-	X = pickle.load(open(filename))
-	time_ave.append(np.mean(X[0,:]))
-	time_std.append(np.std(X[0,:]))
-	accuracy_ave.append(1-np.mean(X[1,:]))
-	accuracy_std.append(np.std(X[1,:]))
+	# filename = "GaussianNB.p"
+	# X = pickle.load(open(filename))
+	# time_ave.append(np.mean(X[0,:]))
+	# time_std.append(np.std(X[0,:]))
+	# accuracy_ave.append(np.mean(X[1,:]))
+	# accuracy_std.append(np.std(X[1,:]))
+
+	# filename = "NeutralNetwork.p"
+	# X = pickle.load(open(filename))
+	# time_ave.append(np.mean(X[0,:]))
+	# time_std.append(np.std(X[0,:]))
+	# accuracy_ave.append(1-np.mean(X[1,:]))
+	# accuracy_std.append(np.std(X[1,:]))
 
 	print time_std,time_ave,accuracy_ave,accuracy_std
 	res = np.vstack((time_ave, time_std, accuracy_ave, accuracy_std))
@@ -85,7 +92,7 @@ def Plot():
 
 
 	##Plot
-	groups = 7
+	groups = 4
 	index = np.arange(groups)
 	bar_width = 0.35
 
@@ -112,7 +119,8 @@ def Plot():
 	ax2.set_ylabel('Accuracy')
 	ax1.set_ylabel('Time(s)')
 	plt.title('MiniBooNE')
-	plt.xticks(index + bar_width, ('LR', 'LinSVM', 'SVM', 'RF', 'KNN','NB','NN'))
+	plt.xticks(index + bar_width, ('LR', 'LinSVM', 'SVM', 'SVM_rbf'))
+	#plt.xticks(index + bar_width, ('LR', 'LinSVM', 'SVM', 'RF', 'KNN','NB','NN'))
 	ax1.legend(['Time'],loc = 'upper right', bbox_to_anchor=(0.9, 1.0))
 	ax2.legend(['Accuracy'],loc = 'upper right', bbox_to_anchor=(0.9, 0.9))
 

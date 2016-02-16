@@ -46,33 +46,25 @@ def logReg():
     time4=time.time()
     print "training time", time4-time3
     
-    j = 0
-    ret = []
-    rea = []
-    while(j < 5):
-        #default training
-        i = 0
-        t = 0
-        accuracy = 0
-        while(i < 3000):
-            time4=time.time()
-            tmp = clf.score(test_fs,test_lab)
-            time5=time.time()
-            accuracy += tmp
-            ret.append(time5-time4)
-            rea.append(tmp)
-            t += (time5-time4)
-            i+=1
-        print "average test time", t/i
-        print "average accuracy", accuracy/i
-        accuracy1 = clf.score(train_fs,train_lab)
-        print "self", accuracy1
-        time.sleep(20)
-        j+=1
+    j,accuracy,t,ret,rea = 0,0,0,[],[]
+    while j<5000:
+        time4 = time.time()
+        acc_tmp = clf.score(test_fs,test_lab)
+        time5 = time.time()
+        time_tmp = time5 - time4
+        accuracy += acc_tmp
+        t += time_tmp
+        ret.append(time_tmp)
+        rea.append(acc_tmp)
+        j +=1
+    
+    print "average test time", t/j
+    print "average accuracy", accuracy/j
+    accuracy1 = clf.score(train_fs,train_lab)
+    print "self", accuracy1     
     res = np.vstack((ret,rea))
     pickle.dump(res, open('LogisticRegression.p','wb+'))
-    time.sleep(30)
-
+    time.sleep(30) 
 
     ###############
     ##SVM
@@ -82,34 +74,27 @@ def logReg():
     clf = svm.SVC(kernel = 'linear')
     clf.fit (train_fs,train_lab)
     time4=time.time()
-    print "training time", time4-time3
+    print "training time", time4-time3   
+
+    j,accuracy,t,ret,rea = 0,0,0,[],[]
+    while j<500:
+        time4 = time.time()
+        acc_tmp = clf.score(test_fs,test_lab)
+        time5 = time.time()
+        time_tmp = time5 - time4
+        accuracy += acc_tmp
+        t += time_tmp
+        ret.append(time_tmp)
+        rea.append(acc_tmp)
+        j +=1
     
-    j = 0
-    ret = []
-    rea = []
-    while(j < 5):
-        #default training
-        i = 0
-        t = 0
-        accuracy = 0
-        while(i < 50):
-            time4=time.time()
-            tmp = clf.score(test_fs,test_lab)
-            time5=time.time()
-            accuracy += tmp
-            ret.append(time5-time4)
-            rea.append(tmp)
-            t += (time5-time4)
-            i+=1
-        print "average test time", t/i
-        print "average accuracy", accuracy/i
-        accuracy1 = clf.score(train_fs,train_lab)
-        print "self", accuracy1
-        time.sleep(20)
-        j+=1
+    print "average test time", t/j
+    print "average accuracy", accuracy/j
+    accuracy1 = clf.score(train_fs,train_lab)
+    print "self", accuracy1     
     res = np.vstack((ret,rea))
     pickle.dump(res, open('SVM.p','wb+'))
-    time.sleep(30)
+    time.sleep(30)   
 
     ###############
     ##SVM
@@ -122,32 +107,25 @@ def logReg():
     time4=time.time()
     print "training time", time4-time3
     
-    j = 0
-    ret = []
-    rea = []
-    while(j < 5):
-        #default training
-        i = 0
-        t = 0
-        accuracy = 0
-        while(i < 50):
-            time4=time.time()
-            tmp = clf.score(test_fs,test_lab)
-            time5=time.time()
-            accuracy += tmp
-            ret.append(time5-time4)
-            rea.append(tmp)
-            t += (time5-time4)
-            i+=1
-        print "average test time", t/i
-        print "average accuracy", accuracy/i
-        accuracy1 = clf.score(train_fs,train_lab)
-        print "self", accuracy1
-        time.sleep(20)
-        j+=1
+    j,accuracy,t,ret,rea = 0,0,0,[],[]
+    while j<500:
+        time4 = time.time()
+        acc_tmp = clf.score(test_fs,test_lab)
+        time5 = time.time()
+        time_tmp = time5 - time4
+        accuracy += acc_tmp
+        t += time_tmp
+        ret.append(time_tmp)
+        rea.append(acc_tmp)
+        j +=1
+    
+    print "average test time", t/j
+    print "average accuracy", accuracy/j
+    accuracy1 = clf.score(train_fs,train_lab)
+    print "self", accuracy1     
     res = np.vstack((ret,rea))
     pickle.dump(res, open('SVM_rbf.p','wb+'))
-    time.sleep(30)
+    time.sleep(30)  
 
 
     ###############
@@ -160,32 +138,25 @@ def logReg():
     time4=time.time()
     print "training time", time4-time3
     
-    j = 0
-    ret = []
-    rea = []
-    while(j < 5):
-        #default training
-        i = 0
-        t = 0
-        accuracy = 0
-        while(i < 3000):
-            time4=time.time()
-            tmp = clf.score(test_fs,test_lab)
-            time5=time.time()
-            accuracy += tmp
-            ret.append(time5-time4)
-            rea.append(tmp)
-            t += (time5-time4)
-            i+=1
-        print "average test time", t/i
-        print "average accuracy", accuracy/i
-        accuracy1 = clf.score(train_fs,train_lab)
-        print "self", accuracy1
-        time.sleep(20)
-        j+=1
+    j,accuracy,t,ret,rea = 0,0,0,[],[]
+    while j<5000:
+        time4 = time.time()
+        acc_tmp = clf.score(test_fs,test_lab)
+        time5 = time.time()
+        time_tmp = time5 - time4
+        accuracy += acc_tmp
+        t += time_tmp
+        ret.append(time_tmp)
+        rea.append(acc_tmp)
+        j +=1
+    
+    print "average test time", t/j
+    print "average accuracy", accuracy/j
+    accuracy1 = clf.score(train_fs,train_lab)
+    print "self", accuracy1     
     res = np.vstack((ret,rea))
     pickle.dump(res, open('LinearSVM.p','wb+'))
-    time.sleep(30)
+    time.sleep(30)  
 
 
     # ##############
